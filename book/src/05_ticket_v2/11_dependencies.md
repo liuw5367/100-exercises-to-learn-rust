@@ -5,7 +5,7 @@ The most common way to specify a dependency is by providing its name and version
 
 ```toml
 [dependencies]
-thiserror = "1"
+thiserror = "1.0.59"
 ```
 
 This will add `thiserror` as a dependency to your package, with a **minimum** version of `1.0.0`.

@@ -15,7 +15,19 @@ pub fn fibonacci(n: u32) -> u32 {
     //
     // Hint: use a `Vec` to memoize the results you have already calculated
     // so that you don't have to recalculate them several times.
-    todo!()
+    let mut vec: Vec<u32> = vec![0; (n+1) as usize];
+
+    if n >= 1 {
+        vec[1] = 1;
+    }
+
+    for i in 2..=n as usize {
+        println!("N: {n}, {i} !!!!!!");
+        vec[i] = vec[i-1] + vec[i-2];
+        println!("{i}::::{}", vec[i]);
+    }
+
+    return vec[n as usize];
 }
 
 #[cfg(test)]
