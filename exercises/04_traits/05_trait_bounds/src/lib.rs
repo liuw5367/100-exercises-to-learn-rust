@@ -7,7 +7,8 @@
 
 /// Return the minimum of two values.
 pub fn min<T>(left: T, right: T) -> T
-where T : std::cmp::Ordering
+where
+    T: std::cmp::Ord,
 {
     if left <= right {
         left

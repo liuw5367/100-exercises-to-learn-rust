@@ -6,7 +6,29 @@
 use std::thread;
 
 pub fn sum(v: Vec<i32>) -> i32 {
-    todo!()
+    if v.is_empty() {
+        return 0;
+    }
+    let v: &'static mut [i32] = Box::leak(v.into_boxed_slice());
+    let mid = v.len() / 2;
+    println!("mid: {mid}");
+
+    let arr = v[..mid].to_vec();
+    let a = thread::spawn(move || {
+        let sum: i32 = arr.iter().sum();
+        sum
+    });
+
+    let arr = v[mid..].to_vec();
+    let b = thread::spawn(move || {
+        let sum: i32 = arr.iter().sum();
+        sum
+    });
+
+    let aa = a.join().unwrap();
+    let bb = b.join().unwrap();
+
+    aa + bb
 }
 
 #[cfg(test)]

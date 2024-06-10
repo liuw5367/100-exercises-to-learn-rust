@@ -2,8 +2,10 @@
 //  modifying the input in place.
 //  Does it need to take a `&mut String`? Does a `&mut [str]` work? Why or why not?
 //
-pub fn lowercase<T: AsMut<str>>(s: &mut T) -> String {
-    s.as_mut().make_ascii_lowercase()
+pub fn lowercase(s: &mut str) -> String {
+    s.make_ascii_lowercase();
+
+    s.to_string()
 }
 
 #[cfg(test)]
